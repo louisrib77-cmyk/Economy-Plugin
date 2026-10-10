@@ -203,6 +203,11 @@ public class EconomyCommands implements CommandExecutor, TabCompleter {
             sender.sendMessage(plugin.msg("no-permission"));
             return;
         }
+        if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+            plugin.reloadAll();
+            sender.sendMessage(plugin.msg("reloaded"));
+            return;
+        }
         if (args.length != 3) {
             sender.sendMessage(plugin.msg("eco-usage"));
             return;
@@ -261,7 +266,7 @@ public class EconomyCommands implements CommandExecutor, TabCompleter {
         String name = cmd.getName().toLowerCase(Locale.ROOT);
         List<String> out = new ArrayList<>();
         if (name.equals("eco") && args.length == 1) {
-            for (String s : List.of("give", "take", "set")) {
+            for (String s : List.of("give", "take", "set", "reload")) {
                 if (s.startsWith(args[0].toLowerCase(Locale.ROOT))) out.add(s);
             }
             return out;

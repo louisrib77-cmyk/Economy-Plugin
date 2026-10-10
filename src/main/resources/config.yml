@@ -1,7 +1,8 @@
-# Das Geld liegt im JobsPlugin - /pay, /balance usw. arbeiten mit demselben Geld.
+# Das Geld liegt im JobsPlugin - /pay, /balance, /sell usw. arbeiten mit demselben Geld.
 currency-symbol: "$"
 min-pay: 0.01          # kleinster Betrag bei /pay
 baltop-page-size: 10
+sell-multiplier: 1.0   # z. B. 2.0 = alles bringt doppelt so viel (Preise stehen in prices.yml)
 
 # MiniMessage-Format. Platzhalter stehen in spitzen Klammern.
 messages:
@@ -22,5 +23,19 @@ messages:
   baltop-header: "<gold><bold>Reichste Spieler <gray>(Seite <page>/<pages>)"
   baltop-line: "<yellow><rank>. <white><player><gray> - <gold><money>"
   baltop-empty: "<gray>Es gibt noch keine Einträge."
-  eco-usage: "<red>Benutzung: <white>/eco <give|take|set> <Spieler> <Betrag>"
+  eco-usage: "<red>Benutzung: <white>/eco <give|take|set> <Spieler> <Betrag> <red>oder <white>/eco reload"
   eco-done: "<gray>Neuer Kontostand von <white><player><gray>: <gold><money>"
+  reloaded: "<gray>Konfiguration und Preise neu geladen."
+  # --- /sell ---
+  sell-title: "<dark_gray>Verkaufen"
+  sell-button-name: "<green><bold>Verkaufen"
+  sell-button-lore:
+    - "<gray>Gesamtwert: <gold><money>"
+    - ""
+    - "<yellow>Klicke hier oder schließe das Menü,"
+    - "<yellow>um die Items zu verkaufen."
+  sell-sold: "<gray>Du hast <white><count><gray> Items für <gold><money><gray> verkauft."
+  sell-returned: "<gray>Nicht verkäufliche Items (<white><count><gray>) hast du zurückbekommen."
+  sell-error: "<red>Beim Verkaufen ist ein Fehler passiert. Du hast deine Items zurückbekommen."
+  worth-line: "<white><item><gray>: <gold><money><gray> pro Stück (Stack: <gold><stack><gray>)"
+  worth-none: "<red>Dieses Item kann man nicht verkaufen."

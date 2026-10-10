@@ -14,6 +14,7 @@ public class LouisEconomy extends JavaPlugin {
 
     private final MiniMessage mm = MiniMessage.miniMessage();
     private JobsBridge bridge;
+    private SellManager sell;
 
     @Override
     public void onEnable() {
@@ -32,7 +33,24 @@ public class LouisEconomy extends JavaPlugin {
                 cmd.setTabCompleter(commands);
             }
         }
+        sell = new SellManager(this);
+        sell.loadPrices();
+        getServer().getPluginManager().registerEvents(sell, this);
+        for (String name : new String[]{"sell", "worth"}) {
+            var cmd = getCommand(name);
+            if (cmd != null) cmd.setExecutor(sell);
+        }
         getLogger().info("Wirtschaft aktiv - nutzt das Geld aus dem JobsPlugin.");
+    }
+
+    @Override
+    public void onDisable() {
+        if (sell != null) sell.closeAll();
+    }
+
+    void reloadAll() {
+        reloadConfig();
+        if (sell != null) sell.loadPrices();
     }
 
     JobsBridge bridge() {

@@ -1,5 +1,5 @@
 name: LouisEconomy
-version: '1.0.0'
+version: '1.1.0'
 main: de.louis.economy.LouisEconomy
 api-version: '26.2'
 depend: [JobsPlugin]
@@ -22,7 +22,21 @@ commands:
     description: Geld verwalten (Admin)
     usage: /eco <give|take|set> <Spieler> <Betrag>
     permission: louiseconomy.admin
+  sell:
+    description: Items verkaufen
+    usage: /sell
+    aliases: [verkaufen]
+    permission: louiseconomy.sell
+  worth:
+    description: Zeigt den Verkaufswert des Items in deiner Hand
+    usage: /worth
+    aliases: [wert]
+    permission: louiseconomy.worth
 permissions:
+  louiseconomy.sell:
+    default: true
+  louiseconomy.worth:
+    default: true
   louiseconomy.pay:
     default: true
   louiseconomy.balance:
